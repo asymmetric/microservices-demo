@@ -18,7 +18,7 @@ items:
         spec:
           containers:
             - name: weavescope-app
-              image: 'asymmetric/scope:ebpf-3031e98'
+              image: 'asymmetric/scope:ebpf'
               args:
                 - '--no-probe'
               ports:
@@ -59,7 +59,7 @@ items:
           hostNetwork: true
           containers:
             - name: weavescope-probe
-              image: 'asymmetric/scope:ebpf-3031e98'
+              image: 'asymmetric/scope:ebpf'
               args:
                 - '--no-app'
                 - '--probe.docker.bridge=docker0'
