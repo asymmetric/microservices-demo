@@ -1,17 +1,24 @@
-apiVersion: v1
-kind: Pod
+apiVersion: extensions/v1beta1
+kind: Deployment
 metadata:
-  name: dialer
+  name: dialer-deployment
   labels:
     name: dialer
 spec:
-  containers:
-  - name: dialer
-    image: asymmetric/dialer
-    args:
-      - dialer
-      - "10.0.0.201:2345"
-      - "10"
+  replicas: 10
+  template:
+    metadata:
+      name: dialer
+      labels:
+        name: dialer
+    spec:
+      containers:
+      - name: dialer
+        image: asymmetric/dialer
+        args:
+          - dialer
+          - "10.0.0.201:2345"
+          - "10"
 ---
 apiVersion: v1
 kind: Pod
