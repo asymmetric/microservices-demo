@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dialer
+  labels:
+    name: dialer
+spec:
+  containers:
+  - name: dialer
+    image: asymmetric/dialer
+    args:
+      - dialer
+      - "10.0.0.201:2345"
+      - "10"
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: server
+  labels:
+    name: server
+spec:
+  containers:
+  - name: server
+    image: nginx
+    ports:
+    - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: server
+  labels:
+    name: server
+spec:
+  ports:
+    # the port that this service should serve on
+  - port: 2345
+    targetPort: 80
+  selector:
+    name: server
+  clusterIP: 10.0.0.201
