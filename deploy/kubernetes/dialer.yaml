@@ -29,7 +29,7 @@ metadata:
 spec:
   containers:
   - name: server
-    image: nginx
+    image: nginx:alpine
     ports:
     - containerPort: 80
 ---
