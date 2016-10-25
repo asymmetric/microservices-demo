@@ -65,6 +65,7 @@ items:
                 - '--probe.docker.bridge=docker0'
                 - '--probe.docker=true'
                 - '--probe.kubernetes=true'
+                - '--probe.http.listen=0.0.0.0:4041'
                 - '$(WEAVESCOPE_APP_SERVICE_HOST):$(WEAVESCOPE_APP_SERVICE_PORT)'
               securityContext:
                 privileged: true
